@@ -12,7 +12,7 @@ load_dotenv()
 #=======================================================================================================================
 
 client = discord.Client()
-TOKEN = ""
+TOKEN = os.getenv("TOKEN")
 
 intents = discord.Intents.all()
 
