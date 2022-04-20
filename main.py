@@ -66,7 +66,7 @@ async def on_command_error(ctx, error):
       cooldown_embed.set_footer(text = f"Cooldown!", icon_url = client.user.avatar_url)
       await ctx.send(embed = cooldown_embed, delete_after = 10.0)
 
-#auto-responses
+#auto-responses -1
 @client.event
 async def on_message(message):
   if message.channel.id == 820311069024583711:
