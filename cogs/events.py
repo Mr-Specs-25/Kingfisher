@@ -29,6 +29,7 @@ class Events(commands.Cog):
     PandaYay = ("<a:RA_PandaYay:909498835578019840>")
     PandaDance = ("<a:RA_PandaDance:909496517973385246>")
     PandaHoorayy = ("<a:RA_PandaHoorayy:909499256291864667>")
+    LightFury = ("<a:R_LightFury:967754943882735676>")
 
     #kingfisher
     KC = ("https://media.discordapp.net/attachments/821196221837606923/840560249336889364/IMG_20210508_151848.jpg")
@@ -43,7 +44,7 @@ class Events(commands.Cog):
             await message.add_reaction(self.PandaRock)
       else:
             if "<@752387831480975361>" in message.content:
-                  await message.add_reaction(self.PandaYay)
+                  await message.add_reaction(self.LightFury)
 
     @commands.Cog.listener()
     async def on_raw_message_delete(self, payload):
