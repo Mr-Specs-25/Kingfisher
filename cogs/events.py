@@ -41,6 +41,9 @@ class Events(commands.Cog):
     async def on_message(self, message):
       if "<@816963491554131998>" in message.content:
             await message.add_reaction(self.PandaRock)
+      else:
+            if "<@752387831480975361>" in message.content:
+                  await message.add_reaction(self.PandaYay)
 
     @commands.Cog.listener()
     async def on_raw_message_delete(self, payload):
