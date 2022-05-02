@@ -45,6 +45,11 @@ class Events(commands.Cog):
       else:
             if "<@752387831480975361>" in message.content:
                   await message.add_reaction(self.LightFury)
+    @commands.Cog.listener()
+    async def on_message(self, message):
+      if "<@816963491554131998>" in message.content:
+            await message.channel.send("> *Hi, <@816963491554131998> is no more active on discord servers- you could try dming / contact through other socials-- :dove:*")
+    
 
     @commands.Cog.listener()
     async def on_raw_message_delete(self, payload):
