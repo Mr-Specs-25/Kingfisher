@@ -42,6 +42,7 @@ class Events(commands.Cog):
     async def on_message(self, message):
       if "<@816963491554131998>" in message.content:
             await message.add_reaction(self.PandaRock)
+            await message.channel.reply("> *Hi, <@816963491554131998> is no more active on discord servers- you could try dming / contact through other socials-- :dove:*")
       else:
             if "<@752387831480975361>" in message.content:
                   await message.add_reaction(self.LightFury)
