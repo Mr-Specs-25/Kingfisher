@@ -45,7 +45,7 @@ class Events(commands.Cog):
       else:
             if "<@752387831480975361>" in message.content:
                   await message.add_reaction(self.LightFury)
-  
+
     @commands.Cog.listener()
     async def on_raw_message_delete(self, payload):
       message = payload.cached_message
