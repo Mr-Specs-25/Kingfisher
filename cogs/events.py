@@ -41,14 +41,10 @@ class Events(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
       if "<@816963491554131998>" in message.content:
-            await message.channel.send("> *Hey- <@816963491554131998> is no more on discord- kindly contact him through other socials-- :dove:*")
-      await self.client.process_commands(message)
-
-    @commands.Cog.listener()
-    async def on_message(self, message):
-      if "<@752387831480975361>" in message.content:
-            await message.add_reaction(self.LightFury)
-      await self.client.process_commands(message)
+            await message.add_reaction(self.PandaRock)
+      else:
+            if "<@752387831480975361>" in message.content:
+                  await message.add_reaction(self.LightFury)
 
     @commands.Cog.listener()
     async def on_raw_message_delete(self, payload):
