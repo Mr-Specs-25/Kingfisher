@@ -41,11 +41,13 @@ class Info(commands.Cog):
     @commands.has_role(837330174651006986)
     async def gaw(self, ctx):
       await ctx.send("<@&819510963270975519>")
+      await ctx.message.delete()
 
     @commands.command()
     @commands.has_role(837330174651006986)
     async def mg(self, ctx):
       await ctx.send("<@&819510965086453781>")
+      await ctx.message.delete()
 
 #========================================================================================================================
 #========================================================================================================================
