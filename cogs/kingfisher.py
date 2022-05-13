@@ -37,6 +37,15 @@ class Info(commands.Cog):
         embed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.send(embed = embed)
 
+    @commands.command()
+    @commands.has_role(837330174651006986)
+    async def gaw(self, ctx):
+      await ctx.send("<@&819510963270975519>")
+
+    @commands.command()
+    @commands.has_role(837330174651006986)
+    async def mg(self, ctx):
+      await ctx.send("<@&819510965086453781>")
 
 #========================================================================================================================
 #========================================================================================================================
