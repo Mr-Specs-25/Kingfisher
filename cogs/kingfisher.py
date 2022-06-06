@@ -2,6 +2,7 @@ import discord
 import datetime, time
 
 from discord.ext import commands
+from discord.ext.commands import has_permissions, MissingPermissions
 from discord.ext.commands.cooldowns import BucketType
 
 #========================================================================================================================
@@ -47,6 +48,12 @@ class Info(commands.Cog):
     @commands.has_role(837330174651006986)
     async def mg(self, ctx):
       await ctx.send("<@&819510965086453781>")
+      await ctx.message.delete()
+
+    @commands.command()
+    @has_permissions(administrator = True)
+    async def dm(self, ctx, user: discord.Member, *, message = None):
+      await user.send(f"> {message}")
       await ctx.message.delete()
 
 #========================================================================================================================
