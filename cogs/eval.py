@@ -9,9 +9,6 @@ from datetime import datetime
 from time import time
 
 
-#========================================================================================================================
-#========================================================================================================================
-
 class Eval(commands.Cog):
     
     def __init__(self, client):
@@ -55,26 +52,23 @@ class Eval(commands.Cog):
                 ret = await func()
         except Exception as e:
             value = stdout.getvalue()
-            evem = discord.Embed(title = "", description = f'`Result`\n```py\n{value}{traceback.format_exc()}\n```')
+            evem = discord.Embed(title = "", description = f"`Result`\n```py\n{value}{traceback.format_exc()}\n```")
             await ctx.send(embed = evem)
         else:
             value = stdout.getvalue()
 
             if ret is None:
                 if value:
-                    evem = discord.Embed(title = "", description = f'`Result`\n```py\n{value}\n```')
+                    evem = discord.Embed(title = "", description = f"`Result`\n```py\n{value}\n```")
                     await ctx.send(embed = evem)
 
             else:
                 self.result = ret
-                evem = discord.Embed(title = "", description = f'`Result`\n```py\n{value}{ret}\n```')
+                evem = discord.Embed(title = "", description = f"`Result`\n```py\n{value}{ret}\n```")
                 await ctx.send(embed = evem)
 
-#========================================================================================================================
-#========================================================================================================================
 
 def setup(client):
     client.add_cog(Eval(client))
 
-#========================================================================================================================
-#========================================================================================================================
+

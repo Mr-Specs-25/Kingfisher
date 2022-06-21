@@ -5,23 +5,17 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions, MissingPermissions
 from discord.ext.commands.cooldowns import BucketType
 
-#========================================================================================================================
-#========================================================================================================================
 
 class Info(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-#========================================================================================================================
-#========================================================================================================================
 
-    #colours
+#colours
     blue = discord.Color.from_rgb(50, 180, 250)
     green = discord.Color.from_rgb(50, 250, 180)
     red = discord.Color.from_rgb(250, 50, 50)
 
-#========================================================================================================================
-#========================================================================================================================
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -38,6 +32,13 @@ class Info(commands.Cog):
         embed.set_footer(text = f"Requested by {ctx.author}", icon_url = ctx.author.avatar_url)
         await ctx.send(embed = embed)
 
+#commands
+    @commands.command()
+    @commands.has_role(837330174651006986)
+    async def help(self, ctx):
+        await ctx.send("```py\n-info \n-gaw \n-mg \ndm```")
+        await ctx.rmessage.delete()
+
     @commands.command()
     @commands.has_role(837330174651006986)
     async def gaw(self, ctx):
@@ -53,14 +54,11 @@ class Info(commands.Cog):
     @commands.command()
     @has_permissions(administrator = True)
     async def dm(self, ctx, user: discord.Member, *, message = None):
-      await user.send(f"> {message}")
+      await user.send(f"{message}")
       await ctx.message.delete()
 
-#========================================================================================================================
-#========================================================================================================================
 
 def setup(client):
     client.add_cog(Info(client))
 
-#========================================================================================================================
-#========================================================================================================================
+

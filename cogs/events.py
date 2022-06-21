@@ -2,42 +2,19 @@ import discord
 
 from discord.ext import commands
 
-#========================================================================================================================
-#========================================================================================================================
 
 class Events(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-#========================================================================================================================
-#========================================================================================================================
-
-    #colours
-    blue = discord.Color.from_rgb(50, 180, 250)
-    green = discord.Color.from_rgb(50, 250, 180)
-    red = discord.Color.from_rgb(250, 50, 50)
-
-    #emotes
-    Info       = ("<:RA_Stats:871077269387509831>")
-    Utility    = ("<:RA_Utility:871077840349720607>")
-    Moderation = ("<:RA_BanHammer:871077232020439090>")
-    Games      = ("<:RA_Games:871077302270820424>")
-    Bullet     = ("<:RA_Bullet:871077168791294012>")
-    X_Mark     = ("<:RA_XMark:871079164554387541>")
-
+#emotes
     PandaRock = ("<a:RA_PandaRock:909496987622195220>")
     PandaYay = ("<a:RA_PandaYay:909498835578019840>")
     PandaDance = ("<a:RA_PandaDance:909496517973385246>")
     PandaHoorayy = ("<a:RA_PandaHoorayy:909499256291864667>")
     LightFury = ("<a:R_LightFury:967754943882735676>")
 
-    #kingfisher
-    KC = ("https://media.discordapp.net/attachments/821196221837606923/840560249336889364/IMG_20210508_151848.jpg")
-    KC_Electro = ("<a:KC_Electro:825642523128758272>")
-
-#========================================================================================================================
-#========================================================================================================================
-
+#perks
     @commands.Cog.listener()
     async def on_message(self, message):
       if "<@816963491554131998>" in message.content:
@@ -46,6 +23,19 @@ class Events(commands.Cog):
             if "<@752387831480975361>" in message.content:
                   await message.add_reaction(self.LightFury)
 
+#error-handling
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+          missing_perms_embed = discord.Embed(title = f"Missing Permissions", description = f"You need `{', '.join(error.missing_perms)}` permission to run this Command", color =  ctx.author.color, timestamp = ctx.message.created_at)
+          missing_perms_embed.set_footer(text = f"Bad Argument!", icon_url = self.client.user.avatar_url) 
+          await ctx.send(embed = missing_perms_embed, delete_after = 10.0)
+        if isinstance(error, commands.CommandOnCooldown):
+          cooldown_embed = discord.Embed(title = f"Command on Cooldown", description = f"You will be able to run this command after `{round(error.retry_after)} seconds` ", color = ctx.author.color, timestamp = ctx.message.created_at)
+          cooldown_embed.set_footer(text = f"Cooldown!", icon_url = self.client.user.avatar_url)
+          await ctx.send(embed = cooldown_embed, delete_after = 10.0)
+
+#logging
     @commands.Cog.listener()
     async def on_raw_message_delete(self, payload):
       message = payload.cached_message
@@ -76,11 +66,8 @@ class Events(commands.Cog):
       
 
 
-#========================================================================================================================
-#========================================================================================================================
 
 def setup(client):
     client.add_cog(Events(client))
 
-#========================================================================================================================
-#========================================================================================================================
+
