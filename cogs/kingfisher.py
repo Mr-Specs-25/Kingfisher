@@ -36,8 +36,8 @@ class Info(commands.Cog):
     @commands.command()
     @commands.has_role(837330174651006986)
     async def help(self, ctx):
-        await ctx.send("```py\n-info \n-gaw \n-mg \ndm```")
-        await ctx.rmessage.delete()
+        await ctx.send("```py\n-info \n-gaw \n-mg \n-dm [user] [message]```")
+        await ctx.message.delete()
 
     @commands.command()
     @commands.has_role(837330174651006986)
